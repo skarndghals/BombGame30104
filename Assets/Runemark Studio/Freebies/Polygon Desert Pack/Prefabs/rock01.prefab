@@ -90,7 +90,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 431854}
-  - component: {fileID: 3702872304176174029}
+  - component: {fileID: 4487855315078978906}
   m_Layer: 0
   m_Name: rock01
   m_TagString: Obstacle
@@ -113,7 +113,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &3702872304176174029
+--- !u!64 &4487855315078978906
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
