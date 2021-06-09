@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Enermy : MonoBehaviour
 {
+    public AudioSource enermyAudio;
+    public GameObject explosionEffect;
     public Transform target;
     private Rigidbody rig;
     public float speed = 20f;
@@ -12,6 +14,7 @@ public class Enermy : MonoBehaviour
     {
         rig = GetComponent<Rigidbody>();
         target = GameObject.FindWithTag("Player").transform;
+        enermyAudio = GetComponent<AudioSource>();
     }
     void Update()
     {
@@ -27,6 +30,8 @@ public class Enermy : MonoBehaviour
         {
             scored = true;
             GameManager.instance.AddScore(1);
+            enermyAudio.Play();
+            Instantiate(explosionEffect, transform.position, transform.rotation);
             transform.position = new Vector3(Random.Range(-30, 30), 0.5f, Random.Range(-30, 30));
             scored = false;
         }
