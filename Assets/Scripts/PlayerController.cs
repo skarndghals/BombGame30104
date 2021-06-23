@@ -6,11 +6,11 @@ public class PlayerController : MonoBehaviour
 {
     private float translation;
     private float rotation;
-    private Animator ani;
+ //   private Animator ani;
 
     private void Start()
     {
-        ani = GetComponent<Animator>();
+//        ani = GetComponent<Animator>();
     }
 
     void Update()
@@ -18,28 +18,31 @@ public class PlayerController : MonoBehaviour
         translation = Input.GetAxis("Vertical") * 10f;
         rotation = Input.GetAxis("Horizontal") * 100f;
 
+        if (GameManager.instance.isGameover) { return; }
+
         transform.Translate(0, 0, translation * Time.deltaTime);
         transform.Rotate(0, rotation * Time.deltaTime, 0);
 
-        if (translation != 0 || rotation != 0)
+/*        if (translation != 0 || rotation != 0)
         {
             ani.SetBool("walk", true);
         }
         else
         {
             ani.SetBool("walk", false);
-        }
+        }*/
     }
     private void OnCollisionEnter(Collision collision)
     {
+        if (GameManager.instance.isGameover) { return; }
         if (collision.collider.tag == "Obstacle")
         {
-            ani.SetTrigger("damage");
+ //           ani.SetTrigger("damage");
             GameManager.instance.AddScore(-1);
         }
         if (collision.collider.tag == "Enermy")
         {
-            ani.SetTrigger("attack01");
+            //ani.SetTrigger("attack01");
             GameManager.instance.OnPlayerDead();
         }
     }
